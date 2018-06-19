@@ -9,7 +9,7 @@ public class CaesarCipherTest {
         String u = "I should have known that you would have a perfect answer for me!!!";
         List<String> v = Arrays.asList("J vltasl rlhr ", "zdfog odxr ypw", " atasl rlhr p ", "gwkzzyq zntyhv", " lvz wp!!!");
         assertEquals(v, CaesarCipher.movingShift(u, 1));
-//        assertEquals(u, CaesarCipher.demovingShift(CaesarCipher.movingShift(u, 1), 1));
+        assertEquals(u, CaesarCipher.demovingShift(CaesarCipher.movingShift(u, 1), 1));
     }
 
     @Test
@@ -17,7 +17,7 @@ public class CaesarCipherTest {
         String u = "I should ha";
         List<String> v = Arrays.asList("J v", "lta", "sl ", "rl", "");
         assertEquals(v, CaesarCipher.movingShift(u, 1));
-//        assertEquals(u, CaesarCipher.demovingShift(CaesarCipher.movingShift(u, 1), 1));
+        assertEquals(u, CaesarCipher.demovingShift(CaesarCipher.movingShift(u, 1), 1));
     }
 
     @Test
@@ -33,6 +33,6 @@ public class CaesarCipherTest {
         String u = "I";
         List<String> v = Arrays.asList("J", "", "", "", "");
         assertEquals(v, CaesarCipher.movingShift(u, 1));
-//        assertEquals(u, CaesarCipher.demovingShift(CaesarCipher.movingShift(u, 1), 1));
+        assertEquals(u, CaesarCipher.demovingShift(CaesarCipher.movingShift(u, 1), 1));
     }
 }

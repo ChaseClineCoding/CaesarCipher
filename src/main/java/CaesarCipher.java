@@ -10,7 +10,7 @@ public class CaesarCipher {
             if ((Pattern.matches("[A-Za-z]", String.valueOf(arr[i])) && Character.toLowerCase(arr[i]) + shift <= 'z')) {
                 arr[i] += shift;
             } else if (Pattern.matches("[A-Z]", String.valueOf(arr[i])) && arr[i] + shift > 'Z') {
-                arr[i] = Character.toChars(((shift - ('Z' - arr[i])) % 26) + 'A')[0];
+                arr[i] = Character.toChars(((shift - ('Z' + 1 - arr[i])) % 26) + 'A')[0];
             } else if (Pattern.matches("[a-z]", String.valueOf(arr[i])) && arr[i] + shift > 'z') {
                 arr[i] = Character.toChars(((shift - ('z' + 1 - arr[i])) % 26) + 'a')[0];
             }
@@ -32,6 +32,18 @@ public class CaesarCipher {
         return result;
     }
 
-//    public static String demovingShift(List<String> s, int shift) {
-//    }
+    public static String demovingShift(List<String> s, int shift) {
+        char[] arr = String.join("", s).toCharArray();
+        for (int i = 0; i < arr.length; i++) {
+            if ((Pattern.matches("[A-Za-z]", String.valueOf(arr[i])) && Character.toLowerCase(arr[i]) - shift >= 'a')) {
+                arr[i] -= shift;
+            } else if (Pattern.matches("[A-Z]", String.valueOf(arr[i])) && arr[i] - shift < 'A') {
+                arr[i] = Character.toChars('Z' - ((shift - (arr[i] - ('A' - 1))) % 26))[0];
+            } else if (Pattern.matches("[a-z]", String.valueOf(arr[i])) && arr[i] - shift < 'a') {
+                arr[i] = Character.toChars('z' - ((shift - (arr[i] - ('a' - 1))) % 26))[0];
+            }
+            shift++;
+        }
+        return String.join("", String.copyValueOf(arr));
+    }
 }
